@@ -589,10 +589,10 @@ const ImageClassification = () => {
 
                     {/* ITEM */}
                     {[
-                      {img: demo1, title: "#01 Plastic Bottle Detection"},
-                      {img: demo2, title: "#02 Glass Classification"},
-                      {img: demo3, title: "#03 Metal Object Recognition"},
-                      {img: demo4, title: "#04 Paper Waste Analysis"},
+                      {img: demo1, title: "#01 Refrigerator Pin Detection"},
+                      {img: demo2, title: "#02 Glass Detection"},
+                      {img: demo3, title: "#03 Laptop Pin Detection"},
+                      {img: demo4, title: "#04 Metal object Detection"},
                     ].map((item, i) => (
                       <div key={i} className="space-y-4">
                         
