@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Search, Image as ImageIcon, MessageSquare, AlertTriangle, List, FileImage, 
+  Search, Image as ImageIcon, MessageSquare, AlertTriangle, List, FileImage,
   Tag, X, CheckCircle2, Layers, Database, Maximize, BarChart3, Type,
-  FileDigit
+  FileDigit, ChevronDown
 } from 'lucide-react';
 
 import sample1 from '../../assets/assignment1/Multimodal_classification/sample1.png';
@@ -15,6 +15,7 @@ import extremeImg from '../../assets/assignment1/Multimodal_classification/extre
 import captionLenDistImg from '../../assets/assignment1/Multimodal_classification/caption_length_distribution.png';
 import captionBoxplotImg from '../../assets/assignment1/Multimodal_classification/caption_length_boxplot.png';
 import wordCloudImg from '../../assets/assignment1/Multimodal_classification/word_cloud.png';
+import GeneratingLabel from './GeneratingLabel';
 
 const MultimodalClassification = () => {
   const [activeTab, setActiveTab] = useState('eda');
@@ -23,6 +24,7 @@ const MultimodalClassification = () => {
   const tabs = [
     { id: 'eda', label: 'Dataset Overview', icon: <Search size={18} /> },
     { id: 'exploration', label: 'Data Exploration', icon: <Layers size={18} /> },
+    { id: 'label-gen', label: 'Label Generation', icon: <Tag size={18} /> },
   ];
 
   const samples = [
@@ -202,8 +204,8 @@ const MultimodalClassification = () => {
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
             className={`flex items-center gap-2 px-8 py-4 rounded-2xl transition-all duration-500 font-black tracking-tight whitespace-nowrap ${activeTab === tab.id
-                ? 'bg-indigo-600 text-white shadow-xl translate-y-[-2px]'
-                : 'text-slate-400 hover:bg-white hover:text-indigo-600'
+              ? 'bg-indigo-600 text-white shadow-xl translate-y-[-2px]'
+              : 'text-slate-400 hover:bg-white hover:text-indigo-600'
               }`}
           >
             {tab.icon} {tab.label}
@@ -224,11 +226,11 @@ const MultimodalClassification = () => {
             {/* EDA TAB - Dataset Overview */}
             {activeTab === 'eda' && (
               <div className="space-y-16">
-                
+
                 {/* Dataset Stats & Constraints */}
                 <SectionCard title="Flickr30k Overview" icon={<List size={22} />}>
                   <div className="grid lg:grid-cols-2 gap-10">
-                    
+
                     {/* Metrics */}
                     <div className="bg-slate-900 rounded-[2rem] p-8 border border-slate-800 shadow-2xl flex flex-col justify-center">
                       <div className="grid grid-cols-2 gap-6">
@@ -251,7 +253,7 @@ const MultimodalClassification = () => {
                         <div className="mt-6 bg-white p-4 rounded-xl border border-rose-100 flex items-start gap-3">
                           <CheckCircle2 size={18} className="text-rose-500 mt-1 flex-shrink-0" />
                           <p className="text-xs text-slate-600 font-medium">
-                            <span className="font-bold text-rose-700">Requirement: </span> 
+                            <span className="font-bold text-rose-700">Requirement: </span>
                             Before proceeding with Zero-Shot and Few-Shot evaluation architectures, we must construct a <b>generative labeling pipeline</b> to intelligently assign definitive multi-class labels to these samples based on semantic clustering of their text captions.
                           </p>
                         </div>
@@ -266,18 +268,18 @@ const MultimodalClassification = () => {
                   <p className="text-slate-500 mb-8 max-w-2xl text-sm">
                     Each entry in the dataset pairs one high-resolution image with five independent descriptive sentences crowdsourced from different annotators, capturing varied perspectives and stylistic phrasing.
                   </p>
-                  
+
                   <div className="flex flex-col gap-10">
                     {samples.map((sample, idx) => (
                       <div key={idx} className="bg-slate-50 border border-slate-100 rounded-[2rem] p-6 lg:p-8 flex flex-col lg:flex-row gap-8 shadow-sm hover:shadow-xl transition-shadow group">
-                        
+
                         {/* Image Side */}
                         <div className="w-full lg:w-1/3 flex flex-col gap-4">
                           <div className="bg-white p-2 rounded-2xl border border-slate-200 shadow-sm relative">
                             <span className="absolute -top-3 -left-3 bg-indigo-600 text-white w-8 h-8 flex items-center justify-center rounded-xl font-black text-sm shadow-lg z-10">#{idx + 1}</span>
-                            <img 
-                              src={sample.img} 
-                              alt={`Sample ${idx + 1}`} 
+                            <img
+                              src={sample.img}
+                              alt={`Sample ${idx + 1}`}
                               className="w-full rounded-xl object-cover aspect-square cursor-zoom-in group-hover:opacity-95 transition-opacity"
                               onClick={() => setSelectedImage(sample.img)}
                             />
@@ -312,7 +314,7 @@ const MultimodalClassification = () => {
             {/* EXPLORATION TAB */}
             {activeTab === 'exploration' && (
               <div className="space-y-16">
-                
+
                 {/* DATA QUALITY OVERALL */}
                 <SectionCard title="Global Data Consistency" icon={<Database size={22} />}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -337,7 +339,7 @@ const MultimodalClassification = () => {
                 {/* IMAGE MODALITY EXPLORATION */}
                 <SectionCard title="Image Modality Exploration" icon={<ImageIcon size={22} />}>
                   <div className="grid lg:grid-cols-2 gap-10 mb-12">
-                    
+
                     {/* STATS */}
                     <div className="space-y-6">
                       {/* Width Height Stats */}
@@ -370,7 +372,7 @@ const MultimodalClassification = () => {
                       {/* RGB Color */}
                       <div className="bg-slate-50 p-6 rounded-[2rem] border border-slate-100 shadow-sm transition-transform hover:-translate-y-1">
                         <h4 className="font-black text-slate-800 uppercase text-xs tracking-widest mb-6 flex items-center gap-2">
-                          <div className="w-4 h-4 rounded-full bg-gradient-to-br from-rose-500 via-emerald-500 to-blue-500 shadow-md" /> 
+                          <div className="w-4 h-4 rounded-full bg-gradient-to-br from-rose-500 via-emerald-500 to-blue-500 shadow-md" />
                           RGB Global Mean Configuration
                         </h4>
                         <div className="grid grid-cols-3 gap-4">
@@ -414,7 +416,7 @@ const MultimodalClassification = () => {
 
                 {/* TEXT MODALITY EXPLORATION */}
                 <SectionCard title="Text Modality Exploration" icon={<MessageSquare size={22} />}>
-                  
+
                   {/* OVERALL WORD TOTALS & TOP 10 */}
                   <div className="grid lg:grid-cols-3 gap-8 mb-12">
                     <div className="bg-indigo-900 text-white p-8 rounded-[2rem] shadow-xl flex flex-col justify-center gap-6 relative overflow-hidden">
@@ -428,15 +430,15 @@ const MultimodalClassification = () => {
                         <p className="text-4xl font-black text-emerald-400">18,285</p>
                       </div>
                     </div>
-                    
+
                     <div className="lg:col-span-2 bg-slate-50 border border-slate-100 p-8 rounded-[2rem]">
                       <h4 className="font-black text-slate-800 uppercase text-xs tracking-widest mb-6 flex items-center gap-2 text-indigo-700">
                         <Type size={16} /> Top 10 Most Common Words Overall
                       </h4>
                       <div className="flex flex-wrap gap-3 font-mono">
                         {[
-                          ["a", "271,739"], ["in", "83,520"], ["the", "62,984"], ["on", "45,686"], 
-                          ["and", "44,299"], ["man", "42,626"], ["is", "41,117"], ["of", "38,844"], 
+                          ["a", "271,739"], ["in", "83,520"], ["the", "62,984"], ["on", "45,686"],
+                          ["and", "44,299"], ["man", "42,626"], ["is", "41,117"], ["of", "38,844"],
                           ["with", "36,208"], ["women", "22,213"]
                         ].map(([w, c]) => (
                           <div key={w} className="bg-white border border-slate-200 px-4 py-2 rounded-xl flex items-center gap-3 shadow-sm hover:border-indigo-300 transition-colors">
@@ -450,26 +452,26 @@ const MultimodalClassification = () => {
 
                   {/* CAPTION LENGTH STATS + IMAGES */}
                   <div className="grid lg:grid-cols-2 gap-10 mb-16">
-                     <div className="space-y-6">
-                        <div className="bg-white border-l-4 border-indigo-500 p-6 shadow-sm rounded-r-2xl">
-                          <h4 className="font-black text-slate-800 uppercase text-xs tracking-widest mb-4">Caption Length Distribution</h4>
-                          <ul className="text-sm text-slate-600 space-y-3 font-medium">
-                            <li className="flex justify-between border-b pb-1"><span>Mean Length</span> <span className="font-black text-indigo-600">13.39 words</span></li>
-                            <li className="flex justify-between border-b pb-1"><span>Maximum</span> <span className="font-black text-indigo-600">82 words</span></li>
-                            <li className="flex justify-between border-b pb-1"><span>Minimum</span> <span className="font-black text-indigo-600">1 word</span></li>
-                            <li className="flex justify-between pt-1">
-                              <span>Majority Density</span> 
-                              <span className="font-black text-emerald-600 bg-emerald-50 px-2 rounded">10 to 16 words</span>
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="bg-slate-50 p-4 border border-slate-100 rounded-2xl cursor-zoom-in group" onClick={() => setSelectedImage(captionLenDistImg)}>
-                           <img src={captionLenDistImg} alt="Length Dist" className="w-full mix-blend-multiply group-hover:opacity-80 transition-opacity" />
-                        </div>
-                     </div>
-                     <div className="bg-slate-50 p-6 border border-slate-100 rounded-[2rem] flex items-center justify-center cursor-zoom-in group" onClick={() => setSelectedImage(captionBoxplotImg)}>
-                        <img src={captionBoxplotImg} alt="Len Boxplot" className="w-full object-contain mix-blend-multiply group-hover:scale-[1.02] transition-transform" />
-                     </div>
+                    <div className="space-y-6">
+                      <div className="bg-white border-l-4 border-indigo-500 p-6 shadow-sm rounded-r-2xl">
+                        <h4 className="font-black text-slate-800 uppercase text-xs tracking-widest mb-4">Caption Length Distribution</h4>
+                        <ul className="text-sm text-slate-600 space-y-3 font-medium">
+                          <li className="flex justify-between border-b pb-1"><span>Mean Length</span> <span className="font-black text-indigo-600">13.39 words</span></li>
+                          <li className="flex justify-between border-b pb-1"><span>Maximum</span> <span className="font-black text-indigo-600">82 words</span></li>
+                          <li className="flex justify-between border-b pb-1"><span>Minimum</span> <span className="font-black text-indigo-600">1 word</span></li>
+                          <li className="flex justify-between pt-1">
+                            <span>Majority Density</span>
+                            <span className="font-black text-emerald-600 bg-emerald-50 px-2 rounded">10 to 16 words</span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="bg-slate-50 p-4 border border-slate-100 rounded-2xl cursor-zoom-in group" onClick={() => setSelectedImage(captionLenDistImg)}>
+                        <img src={captionLenDistImg} alt="Length Dist" className="w-full mix-blend-multiply group-hover:opacity-80 transition-opacity" />
+                      </div>
+                    </div>
+                    <div className="bg-slate-50 p-6 border border-slate-100 rounded-[2rem] flex items-center justify-center cursor-zoom-in group" onClick={() => setSelectedImage(captionBoxplotImg)}>
+                      <img src={captionBoxplotImg} alt="Len Boxplot" className="w-full object-contain mix-blend-multiply group-hover:scale-[1.02] transition-transform" />
+                    </div>
                   </div>
 
                   {/* WORD CLOUD IMAGE */}
@@ -521,8 +523,12 @@ const MultimodalClassification = () => {
               </div>
             )}
 
+
+            {/* LABEL GENERATION TAB */}
+            {activeTab === 'label-gen' && <GeneratingLabel setSelectedImage={setSelectedImage} />}
+            
             {/* Other tabs placeholder */}
-            {activeTab !== 'eda' && activeTab !== 'exploration' && (
+            {activeTab !== 'eda' && activeTab !== 'exploration' && activeTab !== 'label-gen' && (
               <div className="p-12 border-2 border-dashed border-slate-200 rounded-[3rem] text-center text-slate-400 bg-slate-50/50">
                 <Layers size={48} className="mx-auto mb-4 opacity-20" />
                 <h3 className="text-2xl font-black text-slate-500 mb-2">Section under construction</h3>
@@ -537,7 +543,7 @@ const MultimodalClassification = () => {
   );
 };
 
-// HELPER COMPONENTS
+// ─── Shared helper components used by the EDA / Exploration tabs ─────────────
 
 const HorizontalBarChart = ({ data, labelKey, valueKey, colorKey, maxVal, isFloat }) => {
   return (
@@ -550,11 +556,11 @@ const HorizontalBarChart = ({ data, labelKey, valueKey, colorKey, maxVal, isFloa
               {item[labelKey]}
             </div>
             <div className="flex-1 bg-slate-100 h-6 rounded-r-lg relative flex items-center">
-              <motion.div 
+              <motion.div
                 initial={{ width: 0 }}
                 whileInView={{ width: `${percentage}%` }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, ease: "easeOut", delay: idx * 0.02 }}
+                transition={{ duration: 0.8, ease: 'easeOut', delay: idx * 0.02 }}
                 className={`h-full rounded-r-lg ${item[colorKey] || 'bg-indigo-500'}`}
               />
               <span className="absolute left-full ml-3 text-slate-600 font-bold whitespace-nowrap">
@@ -562,10 +568,10 @@ const HorizontalBarChart = ({ data, labelKey, valueKey, colorKey, maxVal, isFloa
               </span>
             </div>
           </div>
-        )
+        );
       })}
     </div>
-  )
+  );
 };
 
 const SectionCard = ({ title, icon, children }) => (
@@ -589,4 +595,7 @@ const MetricItem = ({ label, value, sub, icon }) => (
   </div>
 );
 
+
+
 export default MultimodalClassification;
+
