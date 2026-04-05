@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Search, Image as ImageIcon, MessageSquare, AlertTriangle, List, FileImage,
   Tag, X, CheckCircle2, Layers, Database, Maximize, BarChart3, Type,
-  FileDigit, ChevronDown
+  FileDigit, ChevronDown, Sparkles
 } from 'lucide-react';
 
 import sample1 from '../../assets/assignment1/Multimodal_classification/sample1.png';
@@ -16,6 +16,7 @@ import captionLenDistImg from '../../assets/assignment1/Multimodal_classificatio
 import captionBoxplotImg from '../../assets/assignment1/Multimodal_classification/caption_length_boxplot.png';
 import wordCloudImg from '../../assets/assignment1/Multimodal_classification/word_cloud.png';
 import GeneratingLabel from './GeneratingLabel';
+import ZeroshotVsFewshot from './ZeroshotVsFewshot';
 
 const MultimodalClassification = () => {
   const [activeTab, setActiveTab] = useState('eda');
@@ -25,6 +26,7 @@ const MultimodalClassification = () => {
     { id: 'eda', label: 'Dataset Overview', icon: <Search size={18} /> },
     { id: 'exploration', label: 'Data Exploration', icon: <Layers size={18} /> },
     { id: 'label-gen', label: 'Label Generation', icon: <Tag size={18} /> },
+    { id: 'zeroshot', label: 'Zeroshot vs Fewshot', icon: <Sparkles size={18} /> },
   ];
 
   const samples = [
@@ -526,9 +528,12 @@ const MultimodalClassification = () => {
 
             {/* LABEL GENERATION TAB */}
             {activeTab === 'label-gen' && <GeneratingLabel setSelectedImage={setSelectedImage} />}
-            
+
+            {/* ZEROSHOT VS FEWSHOT TAB */}
+            {activeTab === 'zeroshot' && <ZeroshotVsFewshot setSelectedImage={setSelectedImage} />}
+
             {/* Other tabs placeholder */}
-            {activeTab !== 'eda' && activeTab !== 'exploration' && activeTab !== 'label-gen' && (
+            {activeTab !== 'eda' && activeTab !== 'exploration' && activeTab !== 'label-gen' && activeTab !== 'zeroshot' && (
               <div className="p-12 border-2 border-dashed border-slate-200 rounded-[3rem] text-center text-slate-400 bg-slate-50/50">
                 <Layers size={48} className="mx-auto mb-4 opacity-20" />
                 <h3 className="text-2xl font-black text-slate-500 mb-2">Section under construction</h3>
