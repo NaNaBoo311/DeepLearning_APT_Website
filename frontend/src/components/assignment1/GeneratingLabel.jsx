@@ -59,20 +59,20 @@ const SCATTER_POINTS = generateScatterPoints();
 
 // ─── KeyBERT results data ─────────────────────────────────────────────────────
 const KEYBERT_RESULTS = [
-  { id: 0,  docs: 2790, words: ['playing instruments','playing music','performing','guitar man','musical','playing guitar','men playing','concert','guitar','instruments'] },
-  { id: 1,  docs: 2497, words: ['children playing','young boys','children','boy wearing','boy playing','boy blue','small boy','young boy','little boy','young child'] },
-  { id: 2,  docs: 2479, words: ['construction workers','men working','workers','men wearing','construction worker','building man','construction site','construction','building','man working'] },
-  { id: 3,  docs: 2265, words: ['dogs','grass','grassy field','yellow dog','walking dog','white dog','grassy','running grass','dog','black dog'] },
-  { id: 4,  docs: 1969, words: ['people riding','rides bike','person riding','man riding','riding bikes','riding bike','biker','rides bicycle','bike man','riding bicycle'] },
-  { id: 5,  docs: 1906, words: ['women walking','woman walking','people walking','street woman','people walk','walking street','walks street','walking city','woman wearing','walking sidewalk'] },
-  { id: 6,  docs: 1469, words: ['kitchen man','outdoor market','restaurant','people eating','preparing food','street vendor','grocery','food','kitchen','market man'] },
-  { id: 7,  docs: 1466, words: ['playing soccer','soccer','soccer ball','men playing','players','ball','sports','player','football','plays'] },
-  { id: 8,  docs: 1346, words: ['hiking','hiker','man climbing','man wearing','skating','climber','ski','snow','snow covered','skate'] },
-  { id: 9,  docs: 921,  words: ['boat water','boat','boats','water men','small boat','water man','water people','water person','sailing','fishing'] },
-  { id: 10, docs: 475,  words: ['camera woman','picture woman','taking picture','takes picture','taking pictures','photograph','camera','posing picture','holding camera','woman taking'] },
-  { id: 11, docs: 374,  words: ['people beach','beach people','beach group','walking beach','sitting beach','walk beach','beach','standing beach','beach men','beach woman'] },
-  { id: 12, docs: 342,  words: ['people running','people run','runners','men running','marathon','race group','runner','racing','race','competing'] },
-  { id: 13, docs: 158,  words: ['wedding','bride','ceremony','bouquet','groom','dress holding','dresses','aisle','white dress','couple'] },
+  { id: 0, docs: 2790, words: ['playing instruments', 'playing music', 'performing', 'guitar man', 'musical', 'playing guitar', 'men playing', 'concert', 'guitar', 'instruments'] },
+  { id: 1, docs: 2497, words: ['children playing', 'young boys', 'children', 'boy wearing', 'boy playing', 'boy blue', 'small boy', 'young boy', 'little boy', 'young child'] },
+  { id: 2, docs: 2479, words: ['construction workers', 'men working', 'workers', 'men wearing', 'construction worker', 'building man', 'construction site', 'construction', 'building', 'man working'] },
+  { id: 3, docs: 2265, words: ['dogs', 'grass', 'grassy field', 'yellow dog', 'walking dog', 'white dog', 'grassy', 'running grass', 'dog', 'black dog'] },
+  { id: 4, docs: 1969, words: ['people riding', 'rides bike', 'person riding', 'man riding', 'riding bikes', 'riding bike', 'biker', 'rides bicycle', 'bike man', 'riding bicycle'] },
+  { id: 5, docs: 1906, words: ['women walking', 'woman walking', 'people walking', 'street woman', 'people walk', 'walking street', 'walks street', 'walking city', 'woman wearing', 'walking sidewalk'] },
+  { id: 6, docs: 1469, words: ['kitchen man', 'outdoor market', 'restaurant', 'people eating', 'preparing food', 'street vendor', 'grocery', 'food', 'kitchen', 'market man'] },
+  { id: 7, docs: 1466, words: ['playing soccer', 'soccer', 'soccer ball', 'men playing', 'players', 'ball', 'sports', 'player', 'football', 'plays'] },
+  { id: 8, docs: 1346, words: ['hiking', 'hiker', 'man climbing', 'man wearing', 'skating', 'climber', 'ski', 'snow', 'snow covered', 'skate'] },
+  { id: 9, docs: 921, words: ['boat water', 'boat', 'boats', 'water men', 'small boat', 'water man', 'water people', 'water person', 'sailing', 'fishing'] },
+  { id: 10, docs: 475, words: ['camera woman', 'picture woman', 'taking picture', 'takes picture', 'taking pictures', 'photograph', 'camera', 'posing picture', 'holding camera', 'woman taking'] },
+  { id: 11, docs: 374, words: ['people beach', 'beach people', 'beach group', 'walking beach', 'sitting beach', 'walk beach', 'beach', 'standing beach', 'beach men', 'beach woman'] },
+  { id: 12, docs: 342, words: ['people running', 'people run', 'runners', 'men running', 'marathon', 'race group', 'runner', 'racing', 'race', 'competing'] },
+  { id: 13, docs: 158, words: ['wedding', 'bride', 'ceremony', 'bouquet', 'groom', 'dress holding', 'dresses', 'aisle', 'white dress', 'couple'] },
 ];
 
 // ─── Shared UI sub-components ─────────────────────────────────────────────────
@@ -91,7 +91,7 @@ const SectionCard = ({ title, icon, children }) => (
 const PipelineStage = ({ step, title, desc, icon, isLast, color = 'indigo', expandableContent }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const colorMap = {
-    indigo:  { text: 'text-indigo-500',  border: 'border-indigo-100',  bgGlow: 'bg-indigo-50 group-hover:bg-indigo-100',   line: 'bg-indigo-100',  badge: 'text-indigo-500 bg-indigo-50',   button: 'text-indigo-600 bg-indigo-50 hover:bg-indigo-100'   },
+    indigo: { text: 'text-indigo-500', border: 'border-indigo-100', bgGlow: 'bg-indigo-50 group-hover:bg-indigo-100', line: 'bg-indigo-100', badge: 'text-indigo-500 bg-indigo-50', button: 'text-indigo-600 bg-indigo-50 hover:bg-indigo-100' },
     emerald: { text: 'text-emerald-500', border: 'border-emerald-100', bgGlow: 'bg-emerald-50 group-hover:bg-emerald-100', line: 'bg-emerald-100', badge: 'text-emerald-500 bg-emerald-50', button: 'text-emerald-600 bg-emerald-50 hover:bg-emerald-100' },
   };
   const theme = colorMap[color];
@@ -293,7 +293,7 @@ export default function GeneratingLabel({ setSelectedImage }) {
                   {/* Input */}
                   <div className="flex flex-col items-center gap-3 bg-white p-5 rounded-2xl shadow-sm border border-cyan-200 min-w-[140px]">
                     <div className="flex flex-col gap-1 w-full">
-                      {['Img 1','Img 2','Img 3'].map((lbl, idx) => (
+                      {['Img 1', 'Img 2', 'Img 3'].map((lbl, idx) => (
                         <div key={lbl} className="bg-cyan-50 text-cyan-600 font-mono text-[10px] sm:text-xs text-center px-2 py-2 rounded-lg border border-cyan-100 uppercase tracking-widest whitespace-nowrap" style={{ opacity: 1 - idx * 0.2 }}>
                           [... 5-dim] ({lbl})
                         </div>
@@ -376,7 +376,7 @@ export default function GeneratingLabel({ setSelectedImage }) {
                     <div className="bg-emerald-600 w-[95%] px-3 py-4 rounded-2xl shadow-md border border-emerald-700 flex flex-col justify-center items-center relative group min-h-[90px]">
                       <div className="absolute -inset-1 bg-emerald-400 opacity-40 rounded-2xl blur group-hover:opacity-60 transition-opacity" />
                       <BarChart3 size={20} className="text-white relative z-10 mb-2" />
-                      <span className="font-black text-white text-[10px] md:text-[11px] tracking-widest relative z-10 leading-tight uppercase">Cluster Documents<br />c-TF-IDF</span>
+                      <span className="font-black text-white text-[10px] md:text-[11px] tracking-widest relative z-10 leading-tight uppercase">Cluster Documents<br />TF-IDF</span>
                     </div>
                     <ArrowDown className="text-emerald-300 my-4" size={20} />
                     <div className="bg-white w-[95%] py-4 px-2 rounded-2xl shadow-sm border border-indigo-200 flex flex-col justify-center items-center min-h-[120px]">
@@ -394,7 +394,7 @@ export default function GeneratingLabel({ setSelectedImage }) {
                     <div className="bg-teal-600 w-[95%] px-3 py-4 rounded-2xl shadow-md border border-teal-700 flex flex-col justify-center items-center relative group min-h-[90px]">
                       <div className="absolute -inset-1 bg-teal-400 opacity-40 rounded-2xl blur group-hover:opacity-60 transition-opacity" />
                       <FileDigit size={20} className="text-white relative z-10 mb-2" />
-                      <span className="font-black text-white text-[10px] md:text-[11px] tracking-widest relative z-10 leading-tight uppercase">Individual Docs<br />c-TF-IDF</span>
+                      <span className="font-black text-white text-[10px] md:text-[11px] tracking-widest relative z-10 leading-tight uppercase">Individual Docs<br />TF-IDF</span>
                     </div>
                     <div className="h-3 border-l-2 border-slate-300 my-0.5" />
                     <div className="bg-white w-[85%] py-2 px-2 rounded-lg shadow-sm border border-slate-300 border-dashed flex flex-col justify-center items-center relative my-1 z-20">
@@ -596,10 +596,10 @@ export default function GeneratingLabel({ setSelectedImage }) {
                   <div className="flex flex-col justify-center bg-white border-2 border-emerald-200 rounded-2xl p-4 shadow-sm gap-2 min-w-[200px]">
                     <span className="text-[9px] font-black uppercase tracking-widest text-emerald-500 mb-1">Hypotheses (per label)</span>
                     {[
-                      { label: 'wedding',  highlight: true  },
-                      { label: 'sports',   highlight: false },
-                      { label: 'dogs',     highlight: false },
-                      { label: '…',        highlight: false },
+                      { label: 'wedding', highlight: true },
+                      { label: 'sports', highlight: false },
+                      { label: 'dogs', highlight: false },
+                      { label: '…', highlight: false },
                     ].map(({ label, highlight }) => (
                       <div key={label} className={`font-mono text-[10px] px-2 py-1 rounded-lg border ${highlight ? 'bg-emerald-50 border-emerald-300 text-emerald-800 font-bold' : 'bg-slate-50 border-slate-200 text-slate-500'}`}>
                         "This image shows <span className="font-black">{label}</span>."
@@ -629,11 +629,11 @@ export default function GeneratingLabel({ setSelectedImage }) {
                   </p>
                   <div className="space-y-2">
                     {[
-                      { label: 'wedding',           score: 0.94, winner: true  },
-                      { label: 'taking_pictures',   score: 0.23, winner: false },
-                      { label: 'street_walking',    score: 0.08, winner: false },
-                      { label: 'sports',            score: 0.05, winner: false },
-                      { label: 'dogs',              score: 0.03, winner: false },
+                      { label: 'wedding', score: 0.94, winner: true },
+                      { label: 'taking_pictures', score: 0.23, winner: false },
+                      { label: 'street_walking', score: 0.08, winner: false },
+                      { label: 'sports', score: 0.05, winner: false },
+                      { label: 'dogs', score: 0.03, winner: false },
                     ].map(({ label, score, winner }, i) => (
                       <div key={label} className={`flex items-center gap-3 rounded-xl px-3 py-1.5 ${winner ? 'bg-emerald-50 border border-emerald-200' : ''}`}>
                         <span className={`font-mono text-xs w-36 shrink-0 ${winner ? 'text-emerald-700 font-black' : 'text-slate-500 font-medium'}`}>{label}</span>
@@ -856,34 +856,34 @@ export default function GeneratingLabel({ setSelectedImage }) {
 }
 
 const LABEL_DISTRIBUTION = [
-  { label: 'other',             count: 11326, color: 'bg-slate-400' },
-  { label: 'music_performance', count: 2790,  color: 'bg-violet-500' },
-  { label: 'children',          count: 2497,  color: 'bg-sky-400' },
-  { label: 'construction_work', count: 2479,  color: 'bg-orange-500' },
-  { label: 'dogs',              count: 2265,  color: 'bg-amber-500' },
-  { label: 'biking',            count: 1969,  color: 'bg-lime-500' },
-  { label: 'street_walking',    count: 1906,  color: 'bg-teal-500' },
-  { label: 'sports',            count: 1808,  color: 'bg-emerald-500' },
-  { label: 'food_and_market',   count: 1469,  color: 'bg-rose-400' },
-  { label: 'outdoor_adventure', count: 1346,  color: 'bg-green-600' },
-  { label: 'water_boats',       count: 921,   color: 'bg-cyan-500' },
-  { label: 'taking_pictures',   count: 475,   color: 'bg-indigo-400' },
-  { label: 'beach',             count: 374,   color: 'bg-yellow-400' },
-  { label: 'wedding',           count: 158,   color: 'bg-pink-400' },
+  { label: 'other', count: 11326, color: 'bg-slate-400' },
+  { label: 'music_performance', count: 2790, color: 'bg-violet-500' },
+  { label: 'children', count: 2497, color: 'bg-sky-400' },
+  { label: 'construction_work', count: 2479, color: 'bg-orange-500' },
+  { label: 'dogs', count: 2265, color: 'bg-amber-500' },
+  { label: 'biking', count: 1969, color: 'bg-lime-500' },
+  { label: 'street_walking', count: 1906, color: 'bg-teal-500' },
+  { label: 'sports', count: 1808, color: 'bg-emerald-500' },
+  { label: 'food_and_market', count: 1469, color: 'bg-rose-400' },
+  { label: 'outdoor_adventure', count: 1346, color: 'bg-green-600' },
+  { label: 'water_boats', count: 921, color: 'bg-cyan-500' },
+  { label: 'taking_pictures', count: 475, color: 'bg-indigo-400' },
+  { label: 'beach', count: 374, color: 'bg-yellow-400' },
+  { label: 'wedding', count: 158, color: 'bg-pink-400' },
 ];
 
 const FINAL_LABEL_DISTRIBUTION = [
-  { label: 'children',          count: 5816, color: 'bg-sky-400' },
+  { label: 'children', count: 5816, color: 'bg-sky-400' },
   { label: 'outdoor_adventure', count: 4114, color: 'bg-green-600' },
   { label: 'music_performance', count: 3095, color: 'bg-violet-500' },
-  { label: 'taking_pictures',   count: 2844, color: 'bg-indigo-400' },
-  { label: 'sports',            count: 2790, color: 'bg-emerald-500' },
+  { label: 'taking_pictures', count: 2844, color: 'bg-indigo-400' },
+  { label: 'sports', count: 2790, color: 'bg-emerald-500' },
   { label: 'construction_work', count: 2773, color: 'bg-orange-500' },
-  { label: 'street_walking',    count: 2467, color: 'bg-teal-500' },
-  { label: 'dogs',              count: 2310, color: 'bg-amber-500' },
-  { label: 'biking',            count: 2047, color: 'bg-lime-500' },
-  { label: 'food_and_market',   count: 1802, color: 'bg-rose-400' },
-  { label: 'water_boats',       count: 960,  color: 'bg-cyan-500' },
-  { label: 'beach',             count: 582,  color: 'bg-yellow-400' },
-  { label: 'wedding',           count: 183,  color: 'bg-pink-400' },
+  { label: 'street_walking', count: 2467, color: 'bg-teal-500' },
+  { label: 'dogs', count: 2310, color: 'bg-amber-500' },
+  { label: 'biking', count: 2047, color: 'bg-lime-500' },
+  { label: 'food_and_market', count: 1802, color: 'bg-rose-400' },
+  { label: 'water_boats', count: 960, color: 'bg-cyan-500' },
+  { label: 'beach', count: 582, color: 'bg-yellow-400' },
+  { label: 'wedding', count: 183, color: 'bg-pink-400' },
 ];
