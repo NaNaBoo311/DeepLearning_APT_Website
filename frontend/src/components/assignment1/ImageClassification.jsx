@@ -220,13 +220,13 @@ const ImageClassification = () => {
                 {/* MODIFIED: DATA QUALITY INSIGHTS WITH TOGGLES */}
                 <SectionCard title="Data Quality Insights" icon={<ImageIcon />}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <ExpandableLog title="Inspection: Visual Data Redundancy" icon={<Search size={16} />}>
+                    <ExpandableLog title="Inspection: Data Overview" icon={<Search size={16} />}>
                       <div className="p-4 bg-slate-50 border-t">
                         <img src={dataSamplesImg} className="w-full rounded-xl border cursor-zoom-in hover:shadow-lg transition" onClick={() => setSelectedImage(dataSamplesImg)} alt="Samples" />
                       </div>
                     </ExpandableLog>
 
-                    <ExpandableLog title="Inspection: Exposure Variability" icon={<Search size={16} />}>
+                    <ExpandableLog title="Inspection: Brightness Analysis" icon={<Search size={16} />}>
                       <div className="p-4 bg-slate-50 border-t">
                         <img src={diverseBrightnessImg} className="w-full rounded-xl border cursor-zoom-in hover:shadow-lg transition" onClick={() => setSelectedImage(diverseBrightnessImg)} alt="Brightness" />
                       </div>
@@ -238,13 +238,13 @@ const ImageClassification = () => {
                       </div>
                     </ExpandableLog>
 
-                    <ExpandableLog title="Inspection: Spatial Dimension Outliers 1" icon={<Search size={16} />}>
+                    <ExpandableLog title="Inspection: Size Analysis 1" icon={<Search size={16} />}>
                       <div className="p-4 bg-slate-50 border-t">
                         <img src={extremeDimsImg} className="w-full rounded-xl border cursor-zoom-in hover:shadow-lg transition" onClick={() => setSelectedImage(extremeDimsImg)} alt="Extreme 1" />
                       </div>
                     </ExpandableLog>
 
-                    <ExpandableLog title="Inspection: Spatial Dimension Outliers 2" icon={<Search size={16} />}>
+                    <ExpandableLog title="Inspection: Size Analysis 3" icon={<Search size={16} />}>
                       <div className="p-4 bg-slate-50 border-t">
                         <img src={extremeDims2Img} className="w-full rounded-xl border cursor-zoom-in hover:shadow-lg transition" onClick={() => setSelectedImage(extremeDims2Img)} alt="Extreme 2" />
                       </div>
