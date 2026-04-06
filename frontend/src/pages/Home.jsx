@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import AssignmentCard from '../components/AssignmentCard';
-import { Users, User, Mail, GraduationCap } from 'lucide-react';
+import { Users, User, Mail, GraduationCap, Github } from 'lucide-react';
 
 const Home = () => {
   const members = [
@@ -83,12 +83,25 @@ const Home = () => {
 
       {/* Assignments Section */}
       <div>
-        <h2 className="text-3xl font-bold text-slate-900 mb-8 border-b border-slate-200 pb-4">Assignments</h2>
+        <div className="flex items-center justify-between border-b border-slate-200 pb-4 mb-8">
+          <h2 className="text-3xl font-bold text-slate-900">Assignments</h2>
+          <a
+            href="https://github.com/NaNaBoo311/DeepLearning_APT_Website"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-4 py-2 rounded-xl transition-colors border border-slate-200 hover:border-slate-300 bg-white shadow-sm"
+          >
+            <Github className="w-5 h-5" />
+            <span className="font-medium text-sm hidden sm:inline">Code Repository</span>
+          </a>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <AssignmentCard
             title="Assignment 1"
             description="Exploratory Data Analysis, Data Loading, Model Training, and Evaluation."
             link="/assignment1"
+            presentationVideo="https://www.youtube.com/watch?v=7Nzk_OxPINg"
+            demoVideo="https://www.youtube.com/watch?v=rHvpSYWHlHk"
           />
           {/* Add more assignment cards here as needed in the future */}
         </div>
